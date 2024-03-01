@@ -1,0 +1,17 @@
+<single-spa-router mode="history">  
+    <nav>
+        <application name="@krzaq/menu-bar"></application>
+    </nav>
+    <main>
+        <!-- <route default>
+            <application name="@krzaq/alpha"></application>
+        </route> -->
+        <route path="/alpha">
+            <application name="@krzaq/alpha"></application>
+        </route>
+        <route path="/beta">
+            <application name="@krzaq/beta"></application>
+        </route>
+        <redirect from="/" to="/alpha"></redirect>
+    </main>
+</single-spa-router>
