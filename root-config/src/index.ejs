@@ -12,18 +12,17 @@
         This is needed by babel to share largeish helper code for compiling async/await in older
         browsers. More information at https://github.com/single-spa/create-single-spa/issues/112
         -->
-        <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script> -->
 
         <!--
         This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
         Learn more about CSP policies at https://content-security-policy.com/#directive
         -->
-        <meta http-equiv="Content-Security-Policy"
-            content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';"> -->
         <meta name="importmap-type" content="systemjs-importmap" />
         <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
         <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
-        <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
+        <meta name="import-map-overrides-domains" content="denylist:*" />
 
         <!-- Shared dependencies go into this import map. Your shared dependencies must be of one of the following formats:
 
@@ -40,20 +39,23 @@
                 }
             }
         </script>
-        <!-- <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script"> -->
 
-        <!-- Add your organization's prod import map URL to this script's src  -->
-        <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
-
-        <% if (isLocal) { %>
+        <% if (development) { %>
             <script type="systemjs-importmap">
                 {
                     "imports": {
-                        "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-                        "@krzaq/root-config": "//localhost:4100/krzaq-root-config.js",
-                        "@krzaq/menu-bar": "//localhost:4101/main.js",
-                        "@krzaq/alpha": "//localhost:4102/main.js",
-                        "@krzaq/beta": "//localhost:4103/main.js"
+                        "@krzaq/root-config": "//localhost:4000/krzaq-root-config.js",
+                        "@krzaq/menu-bar": "//localhost:4001/main.js",
+                        "@krzaq/alpha": "//localhost:4002/main.js",
+                        "@krzaq/beta": "//localhost:4003/main.js"
+                    }
+                }
+            </script>
+        <% } else { %>
+            <script type="systemjs-importmap">
+                {
+                    "imports": {
+                        
                     }
                 }
             </script>
@@ -66,7 +68,7 @@
         <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
-        <% if (isLocal) { %>
+        <% if (development) { %>
             <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
         <% } else { %>

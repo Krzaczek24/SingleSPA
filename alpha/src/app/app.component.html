@@ -1,3 +1,17 @@
-<p>ALPHA</p>
+<div class="container">
+    <p>ALPHA</p>
 
-<router-outlet />
+    <p class="local">
+        <a routerLink="one">one</a>
+        &nbsp;
+        <a routerLink="two">two</a>
+    </p>
+
+    <p class="foreign">
+        <a href="/beta/one" (click)="singleSpaAngularNavigate($event)">/beta/one</a>
+        &nbsp;
+        <a href="/beta/two" onclick="singleSpaNavigate(event)">/beta/two</a>
+    </p>
+
+    <router-outlet />
+</div>

@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration development --port 4101",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "build:single-spa:menu-bar": "ng build menu-bar --configuration production",
-    "serve:single-spa:menu-bar": "ng s --project menu-bar --disable-host-check --port 4101 --live-reload false"
+    "start": "ng serve --configuration development --port 4001",
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {

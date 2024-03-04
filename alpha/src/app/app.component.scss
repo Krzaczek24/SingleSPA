@@ -1,0 +1,13 @@
+div.container {
+    background-color: lightseagreen;
+    padding: 8px 24px;
+    margin-bottom: 8px;
+
+    p.local a {
+        background-color: lightgreen;
+    }
+    
+    p.foreign a {
+        background-color: lightcoral;
+    }
+}
